@@ -19,6 +19,7 @@ import java.text.ParseException;
 import java.util.Collection;
 import java.util.Locale;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.Formatter;
 import org.springframework.stereotype.Component;
@@ -39,29 +40,33 @@ import org.springframework.stereotype.Component;
  * @author Michael Isvy
  */
 @Component
+@Slf4j
 public class PetTypeFormatter implements Formatter<PetType> {
 
-	private final PetService peService;
+    private final PetService peService;
 
-	@Autowired
-	public PetTypeFormatter(PetService petService) {
-		this.peService = petService;
-	}
+    @Autowired
+    public PetTypeFormatter(PetService petService) {
+        this.peService = petService;
+    }
 
-	@Override
-	public String print(PetType petType, Locale locale) {
-		return petType.getName();
-	}
+    @Override
+    public String print(PetType petType, Locale locale) {
 
-	@Override
-	public PetType parse(String text, Locale locale) throws ParseException {
-		Collection<PetType> findPetTypes = this.peService.findPetTypes();
-		for (PetType type : findPetTypes) {
-			if (type.getName().equals(text)) {
-				return type;
-			}
-		}
-		throw new ParseException("type not found: " + text, 0);
-	}
+        log.info("printing pettype");
+        return petType.getName();
+    }
+
+    @Override
+    public PetType parse(String text, Locale locale) throws ParseException {
+        log.info("parse:");
+        Collection<PetType> findPetTypes = this.peService.findPetTypes();
+        for (PetType type : findPetTypes) {
+            if (type.getName().equals(text)) {
+                return type;
+            }
+        }
+        throw new ParseException("type not found: " + text, 0);
+    }
 
 }

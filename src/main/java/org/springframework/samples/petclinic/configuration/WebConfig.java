@@ -8,6 +8,8 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.format.FormatterRegistry;
+import org.springframework.samples.petclinic.pet.PetType;
+import org.springframework.samples.petclinic.pet.PetTypeFormatter;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -19,11 +21,14 @@ public class WebConfig implements WebMvcConfigurer {
 	
 	@Autowired
 	GenericIdToEntityConverter idToEntityConverter;
+    @Autowired
+    PetTypeFormatter petTypeFormatter;
 	
     @Override
     public void addFormatters(FormatterRegistry registry) {
     	
         registry.addConverter(idToEntityConverter);
+        registry.addFormatter(petTypeFormatter);
     }
     
     @Override

@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 import javax.validation.constraints.PositiveOrZero;
 import javax.validation.constraints.Size;
 
@@ -23,8 +24,6 @@ public class Product {
     @NotNull
     @PositiveOrZero
     double price;
-
-
 
     @ManyToOne()
     @JoinColumn(name = "producttype_id")

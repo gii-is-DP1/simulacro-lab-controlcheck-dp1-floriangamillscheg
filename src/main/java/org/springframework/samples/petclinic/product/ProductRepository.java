@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 public interface ProductRepository extends CrudRepository < Product, Integer >{
     List<Product> findAll();
 
+
     @Query("SELECT u FROM ProductType u")
     List<ProductType> findAllProductTypes();
 

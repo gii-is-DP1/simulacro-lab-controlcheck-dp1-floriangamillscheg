@@ -3,6 +3,7 @@ package org.springframework.samples.petclinic.product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
 import java.util.List;
 
 
@@ -24,6 +25,8 @@ public class ProductService {
     public List<Product> getProductsCheaperThan(double price) {
         return this.productRepository.findByPriceLessThan(price);
     }
+
+    public List<ProductType> getAllProductTypes() {return this.productRepository.findAllProductTypes();}
 
     public ProductType getProductType(String typeName) {return this.productRepository.getProductTypeByName(typeName);}
 
