@@ -6,6 +6,8 @@ INSERT INTO users(username,password,enabled) VALUES ('owner1','0wn3r',TRUE);
 INSERT INTO authorities(id,username,authority) VALUES (2,'owner1','owner');
 -- One vet user, named vet1 with passwor v3t
 INSERT INTO users(username,password,enabled) VALUES ('vet1','v3t',TRUE);
+
+
 INSERT INTO authorities(id,username,authority) VALUES (3,'vet1','veterinarian');
 
 INSERT INTO vets(id, first_name,last_name) VALUES (1, 'James', 'Carter');
@@ -61,4 +63,12 @@ INSERT INTO visits(id,pet_id,visit_date,description) VALUES (1, 7, '2013-01-01',
 INSERT INTO visits(id,pet_id,visit_date,description) VALUES (2, 8, '2013-01-02', 'rabies shot');
 INSERT INTO visits(id,pet_id,visit_date,description) VALUES (3, 8, '2013-01-03', 'neutered');
 INSERT INTO visits(id,pet_id,visit_date,description) VALUES (4, 7, '2013-01-04', 'spayed');
+
+
+INSERT INTO hello(id,name) VALUES (1,'Accessories');
+INSERT INTO hello(id,name) VALUES (2,'Food');
+
+INSERT INTO product(id,name,price, producttype_id) VALUES (1,'Wonderful dog collar', 17.25, 1);
+INSERT INTO product(id,name,price, producttype_id) VALUES (2,'Super Kitty Cookies', 50.00, 2);
+
 
